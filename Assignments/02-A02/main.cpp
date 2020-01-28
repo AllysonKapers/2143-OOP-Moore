@@ -1,3 +1,22 @@
+///////////////////////////////////////////////////////////////////////////////
+//                   
+// Author:           Ally Moore
+// Email:            ally_moore6@hotmail.com
+// Title:            Commenting Homework
+// Course:           CMPS 2143
+// Semester:         Spring 2020
+//
+// Description:
+//       This program implements a class that allows a linked list to be used normally and with
+//       just like an array. It overloads the "[]" (square brackets) to simulate accessing 
+//       seperate array elements, but really it traverses the list to find the specified node 
+//       using an index value. This program also has a method to concatenate lists and print
+//       a list to a file.
+//       
+// Files:            
+//      main.cpp    : driver program 
+/////////////////////////////////////////////////////////////////////////////////
+
 #include <iostream>
 
 using namespace std;
