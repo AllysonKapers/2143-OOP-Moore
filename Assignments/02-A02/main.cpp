@@ -6,34 +6,79 @@ int A[100];
 
 struct Node
 {
-    int x;
-    Node *next;
+    int x;          //data type held in node
+    Node *next;     //pointer to keep track of next node
+    //constructor
     Node()
     {
-        x = -1;
-        next = NULL;
+        x = -1;             //default data is -1
+        next = NULL;        //next will alwasy be NULL unless manipulated otherwise
     }
+    //overloaded constructor
     Node(int n)
     {
-        x = n;
+        x = n;              //node data is whatever int is passed into the overloaded constructor
         next = NULL;
     }
 };
 
+/**
+ * List
+ * 
+ * Description:
+ *      This is a basic List class with all the basic functions, plus functions to 
+ *      concatenate lists, search for an index like an an array, and print to a file.
+ * 
+ * Public Methods:
+ *      - List 
+ *      - void Push(int val)
+ *      - void Insert(int val)
+ *      - void PrintTail()
+ *      - string Print()
+ *      - int Pop()
+ *      - List operator+(const List &Rhs)
+ *      - int operator[](int index)
+ *      - friend ostream &operator<<(ostream &os, List L)
+ * 
+ * Private Methods:
+ *      - Node *Head;
+ *      - Node *Tail;
+ *      - int Size;
+ * 
+ * Usage: 
+ * 
+ *      - examples of how
+ *      - to use your class 
+ *      
+ */
+
 class List
 {
   private:
-    Node *Head;
-    Node *Tail;
-    int Size;
+    Node *Head;     //pointer to keep track of Head
+    Node *Tail;     //pointer to keep track of Tail
+    int Size;       //int to keep track of the size of the list
 
   public:
+    //class constructor
     List()
     {
         Head = Tail = NULL;
         Size = 0;
     }
 
+    /**
+     * Public/Private/Protected : push
+     * 
+     * Description:
+     *      Adds new node to the end of the list, handles case of first node
+     * 
+     * Params:
+     *      - int val : integer to be loaded into a new node
+     * 
+     * Returns:
+     *      - nothing
+     */
     void Push(int val)
     {
         // allocate new memory and init node
@@ -51,6 +96,18 @@ class List
         Size++;
     }
 
+    /**
+     * Public/Private/Protected : Insert
+     * 
+     * Description:
+     *      Adds a new node to the front of the list
+     * 
+     * Params:
+     *      - int val : loads val into a new node
+     * 
+     * Returns:
+     *      - nothing 
+     */
     void Insert(int val)
     {
         // allocate new memory and init node
@@ -67,11 +124,35 @@ class List
         Size++;
     }
 
+    /**
+     * Public/Private/Protected : PrintTail
+     * 
+     * Description:
+     *     Prints the data in the Tail node
+     * 
+     * Params:
+     *      - none
+     * 
+     * Returns:
+     *      - nothing
+     */
     void PrintTail()
     {
         cout << Tail->x << endl;
     }
 
+    /**
+     * Public/Private/Protected : Print
+     * 
+     * Description:
+     *      Traverses the list adding each value to a string
+     * 
+     * Params:
+     *      - none
+     * 
+     * Returns:
+     *      - string list
+     */
     string Print()
     {
         Node *Temp = Head;
@@ -86,6 +167,18 @@ class List
         return list;
     }
 
+    /**
+     * Public/Private/Protected : Pop
+     * 
+     * Description:
+     *      Would remove a node from the list
+     * 
+     * Params:
+     *      - none
+     * 
+     * Returns:
+     *      - 0 : (would return popped nodes data if implemented)
+     */
     // not implemented 
     int Pop()
     {
@@ -93,6 +186,18 @@ class List
         return 0; //
     }
 
+    /**
+     * Public/Private/Protected : operator+
+     * 
+     * Description:
+     *      adds a passed in list to the end of the local list
+     * 
+     * Params:
+     *      - const List &Rhs : list to be concatenated to local list, holds ints
+     * 
+     * Returns:
+     *      - list NewList
+     */
     List operator+(const List &Rhs)
     {
         // Create a new list that will contain both when done
@@ -122,6 +227,18 @@ class List
         return NewList;
     }
 
+    /**
+     * Public/Private/Protected : operator[]
+     * 
+     * Description:
+     *      Treats list like an array and returns the int value at a specified index
+     * 
+     * Params:
+     *      - int index : the locations we're looking for in the list
+     * 
+     * Returns:
+     *      - int : returns the integer value at 
+     */
     // Implementation of [] operator.  This function returns an
     // int value as if the list were an array.
     int operator[](int index)
@@ -144,6 +261,19 @@ class List
         }
     }
 
+    /**
+     * Public : &operator<<
+     * 
+     * Description:
+     *      prints a passed list to a file
+     * 
+     * Params:
+     *      ostream &os    :  the file the user wants the list printed to
+     *      List L     :  the list to be printed to the file
+     * 
+     * Returns:
+     *      friend   : the modified file that was passed in
+     */
     friend ostream &operator<<(ostream &os, List L)
     {
         os << L.Print();
