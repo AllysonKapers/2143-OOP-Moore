@@ -12,4 +12,4 @@
 - Pygame
 
 ### Update Starting Population:
-- Under sim, in the config code block, you can change the starting population but changing the number following "population_count". 
+- Under sim, in the config code block, you can change the starting population by changing the number following "population_count". 
